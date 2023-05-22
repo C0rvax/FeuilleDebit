@@ -13,6 +13,11 @@ def writeAll(nombrePx, longPx, largPx, ref):
         fc.close
 
 
+EpaisseurFond = 0
+ratio = 100
+hauteurSocle = 0
+EpaisseurPorte = 0
+
 nomProjet = input("Nom du projet :\n")
 dimensions = input(
     "Entrer les dimensions du meuble sous le format : hauteur;Largeur;Profondeur (en mm) :\n")
@@ -33,8 +38,7 @@ if Recouvrement != 0:
     profMontant = profondeurTotale - epaisseurPetit
 else:
     profMontant = profondeurTotale
-profondeurInt = int((profondeurTotale - epaisseurFond -
-                    Recouvrement * epaisseurPetit))
+profondeurInt = int((profondeurTotale - epaisseurFond - EpaisseurPorte))
 hauteurInterieur = (hauteurTotale - hauteurSocle - epaisseurPetit)
 hauteurMontantInter = (hauteurTotale - epaisseurPetit)
 LargeurInt = (LargeurTotale - 2 * epaisseurMontant)
