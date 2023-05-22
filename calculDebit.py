@@ -26,6 +26,7 @@ recouvrement = int(input(
 nbCaisson = int(input("Entrer le nombre de caisson :\n"))
 
 # VARIABLES
+taillePxMax = 1200
 hauteurTotale = int(li[0])
 largeurTotale = int(li[1])
 profondeurTotale = int(li[2])
@@ -46,9 +47,9 @@ with open(nomProjet + '.txt', 'w') as f:
     f.close
 
 with open(nomProjet + 'detail.txt', 'w') as fc:
-    fc.write(nomProjet + "\nDimensions : " + str(dimensions) + "mm")
+    fc.write(nomProjet + "\nDimensions : " + str(dimensions) + "mm\n")
     fc.write("Epaisseur Montant : " + str(epaisseurMontant) +
-             " mm ; Etagères : " + str(epaisseurPetit) + "mm")
+             " mm ; Etagères : " + str(epaisseurPetit) + "mm\n")
     fc.write("Hauteur du socle : " + str(hauteurSocle) + " mm\nEpaisseur du fond : " +
              str(epaisseurFond) + " mm\nRecouvrement : " + str(recouvrement) + "\n\n")
     fc.close
@@ -95,4 +96,18 @@ for i in range(nbCaisson):
     writeAll(str(nbEtageres), str(largeurcaisson),
              str(profondeurInt), "Etageres")
 
-    LargeurInt = LargeurInt - largeurcaisson - epaisseurMontant
+    largeurInt = largeurInt - largeurcaisson - epaisseurMontant
+
+if epaisseurFond > 0:
+    largFond = largeurTotale + 20 - 2 * epaisseurMontant
+    hauteurFond = hauteurInterieur + 20
+
+    with open(nomProjet + '.txt', 'a') as f:
+        f.write("\nEn " + str(epaisseurFond) + "mm d'épaisseur\n")
+        f.close
+    with open(nomProjet + 'detail.txt', 'a') as fc:
+        fc.write("\n\nFond\n")
+        fc.close
+    if largFond > taillePxMax:
+        largFond = largFond / 2
+    writeAll(str(2), str(hauteurFond), str(largFond), "Fond")
