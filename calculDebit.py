@@ -68,7 +68,7 @@ writeAll(str(1), str(largeurTotale), str(profMontant), "Corniche")
 
 for i in range(nbCaisson):
     largeurcaisson = int(input("Caisson " + str(i+1) + " - Entrer la largeur (" +
-                         str(LargeurInt) + " mm disponible) :\n"))  # reponse < Largeur int
+                         str(largeurInt) + " mm disponible) :\n"))  # reponse < Largeur int
     porte = int(input("Caisson " + str(i) +
                 " : Entrer le nombre de porte :\n"))  # reponse : 0,1 ou 2
     nbEtageres = int(input("Entrer le nombre d'étagère du caisson :\n")) + 1
