@@ -88,13 +88,13 @@ writeAll(str(1), str(largeurTotale), str(profMontant), "Corniche")
 
 for i in range(nbCaisson):
     if nbCaisson > 1:
-        largeurcaisson = int(input("Caisson " + str(i+1) + " - Entrer la largeur (" +
-                             str(largeurInt) + " mm disponible) :\n"))
+        largeurcaisson = verif("Caisson " + str(i+1) + " - Entrer la largeur (" +
+                               str(largeurInt) + " mm disponible)", 0, largeurInt)
     else:
         largeurcaisson = largeurInt
-    porte = int(input("Caisson " + str(i) +
-                " : Entrer le nombre de porte :\n"))
-    nbEtageres = int(input("Entrer le nombre d'étagère du caisson :\n")) + 1
+    porte = verif("Caisson " + str(i+1) +
+                  " : Entrer le nombre de porte", 0, 2)
+    nbEtageres = verif("Entrer le nombre d'étagère du caisson", 0, 50) + 1
 
     with open(cheminDossier + "\\" + nomProjet + 'detail.txt', 'a') as fc:
         fc.write("\nCaisson " + str(i+1) + "\nLargeur : " + str(largeurcaisson) +
